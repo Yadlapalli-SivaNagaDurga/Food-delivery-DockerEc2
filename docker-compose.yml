@@ -3,13 +3,18 @@ version: '3'
 services:
 
   mysql:
-    image: mysql:8
-    container_name: mysql_db
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: food_delivery
-    ports:
-      - "3306:3306"
+  image: mysql:8
+  container_name: mysql_db
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: food_delivery
+  ports:
+    - "3306:3306"
+  volumes:
+    - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
 
   backend:
     build: ./Food-delivery-backend
